@@ -25,22 +25,21 @@ function App() {
 
 
   return (
-    // <div className="app">
-    //   <div className="nav">
-    //     logo
-    //   </div>
-    //   <div className="sidebar">
-    //     <img src={sidebar__img} />
-    //   </div>
-    //   <div className="recipes">
-    //     <div className="recipes__nav">
-    //       <div className="recipes__nav__subtitle"><h2>Recetas de Cocina</h2></div>
+    <div className="app">
+      <div className="nav">
+        logo
+      </div>
+      <div className="sidebar">
+        <img src={sidebar__img} />
+      </div>
+      <div className="recipes">
+        <div className="recipes__nav">
+          <div className="recipes__nav__subtitle"><h2>Recetas de Cocina</h2></div>
 
-    //       <div className="recipes__nav--flexrow">
-    //         <div className="recipes__nav__search"><p>Buscador</p></div>
-    //         <div className="recipes__nav__drop"><p>Cocido antes:Todos</p></div>
-    //       </div>
-
+          <div className="recipes__nav--flexrow">
+            <div className="recipes__nav__search"><p>Buscador</p></div>
+            <div className="recipes__nav__drop"><p>Cocido antes:Todos</p></div>
+          </div> 
 
 
           <div className="recipes__nav__table">
@@ -57,10 +56,10 @@ function App() {
 
 
           </div>
-    //     </div>
+        </div>
 
-    //   </div>
-    // </div>
+      </div>
+    </div>
 
   );
 }
