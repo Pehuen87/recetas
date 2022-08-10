@@ -1,0 +1,35 @@
+.toggle-switch-checkbox {
+  display: none;
+}
+
+.toggle-switch-checkbox:checked~.toggle-switch-label>.toggle-switch-visible {
+  background-color:  #8DC63F;
+}
+
+
+.toggle-switch-checkbox:checked~.toggle-switch-label>.toggle-switch-visible::before {
+  right: 3px;
+  left: auto;
+}
+
+.toggle-switch-visible {
+  height: 24px;
+  width: 48px;
+  border-radius: 16px;
+  background-color: #79797A;
+  position: relative;
+}
+
+
+.toggle-switch-visible::before {
+  content: '';
+  background: #FFFFFF;
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  left: 3px;
+  top: 3px;
+  width: 18px;
+  height: 18px;
+  z-index: 1;
+}
