@@ -31,7 +31,7 @@ function App() {
 
 
   return (
-    <div className="app">
+    <div className="app disableScrollbar">
       <div className="nav">
         <img src={logo} alt="" />
       </div>
@@ -44,7 +44,7 @@ function App() {
 
           <div className="recipes__nav__bar">
             <div className="recipes__nav__search">
-              <img src={searchIcon} alt=""/>
+              <img src={searchIcon} alt="" />
               <div>Buscador</div>
 
             </div>
@@ -52,40 +52,36 @@ function App() {
             <div className="recipes__nav__drop">
               <p>Cocido antes: <strong>Todos</strong><img src={arrowDropDown} alt="" /></p>
               <div className='droplist'>
-                <div>Todos</div><div className='droplist__radio droplist__radio--checked'></div>
+              <div>Todos</div><input type="radio" name="dropdownlist" id="radio__all" value="all" defaultChecked/>
+              <div>Activos</div><input type="radio" name="dropdownlist" id="radio__checked" value="checked"/>
+              <div>Inactivos</div><input type="radio" name="dropdownlist" id="radio__unchecked" value="unchecked"/>
+               
+                {/* <div>Todos</div><div className='droplist__radio droplist__radio--checked'></div>
                 <div>Activos</div><div className='droplist__radio droplist__radio--checked'></div>
-                <div>Inactivos</div><div className='droplist__radio'></div>
+                <div>Inactivos</div><div className='droplist__radio'></div> */}
+
               </div>
             </div>
           </div>
-
-
-          <div className="recipes__nav__table recipes__nav__table--header">
-            <div>Nombre de la receta</div>
-            <div>Reseñas</div>
-            <div>Cocinado antes</div>
-          </div>
-
-
-          <div className="recipes__nav__table recipes__nav__table--items">
-
-            {recipes.map(recipe =>
-            <>
-            <div>{recipe.name}</div><div>{reviews(recipe.reviews)}</div><Toggle Name={recipe.id.toString()} Checked={recipe.isCooked} />
-            </>
-            )}
-{/* 
-            <div>Melodía de bayas mixtas</div><div>{reviews(5)}</div><Toggle Name="1" />
-            <div>Melodía de bayas mixtas</div><div>{reviews(5)}</div><Toggle Name="2" />
-            <div>Melodía de bayas mixtas</div><div>{reviews(0)}</div><Toggle Name="3" /> */}
-
-
-
-
-          </div>
         </div>
 
+        <div className="recipes__table recipes__table--header">
+          <div>Nombre de la receta</div>
+          <div>Reseñas</div>
+          <div>Cocinado antes</div>
+        </div>
+
+        <div className="recipes__table recipes__table--items">
+
+          {recipes.map(recipe =>
+            <>
+              <div>{recipe.name}</div><div>{reviews(recipe.reviews)}</div><Toggle Name={recipe.id.toString()} Checked={recipe.isCooked} />
+            </>
+          )}
+
+        </div>
       </div>
+
     </div>
 
   );

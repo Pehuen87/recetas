@@ -48,6 +48,53 @@ const recipes: Array<Recipe> = [
         isCooked: true,
         ingredients: ["ajo", "cebolla", "pan"],
         preparation: "hacer asi y asa"
+    },{
+        id:6,
+        name: "Melodía de bayas mixtas6",
+        reviews: 4,
+        isCooked: true,
+        ingredients: ["ajo", "cebolla", "pan"],
+        preparation: "hacer asi y asa"
+    },
+    {
+        id:7,
+        name: "Melodía de bayas mixtas7",
+        reviews: 3,
+        isCooked: true,
+        ingredients: ["ajo", "cebolla", "pan"],
+        preparation: "hacer asi y asa"
+    },
+    {
+        id:8,
+        name: "Melodía de bayas mixtas8",
+        reviews: 2,
+        isCooked: false,
+        ingredients: ["ajo", "cebolla", "pan"],
+        preparation: "hacer asi y asa"
+    },
+    {
+        id:9,
+        name: "Melodía de bayas mixtas9",
+        reviews: -8,
+        isCooked: true,
+        ingredients: ["ajo", "cebolla", "pan"],
+        preparation: "hacer asi y asa"
+    },
+    {
+        id:10,
+        name: "Melodía de bayas mixtas10",
+        reviews: 144,
+        isCooked: true,
+        ingredients: ["ajo", "cebolla", "pan"],
+        preparation: "hacer asi y asa"
+    },
+    {
+        id:11,
+        name: "Melodía de bayas mixtas11",
+        reviews: 4,
+        isCooked: true,
+        ingredients: ["ajo", "cebolla", "pan"],
+        preparation: "hacer asi y asa"
     }
 ]
 
