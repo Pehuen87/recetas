@@ -1,33 +1,39 @@
+import { useState } from 'react'
 
 import sidebar__img from './img/salad.png'
-import starIcon from './img/starIcon.png'
-import starBorderIcon from './img/starBorderIcon.png'
 import logo from './img/logo.svg'
 import arrowDropDown from './img/arrowDropDown.png'
 import searchIcon from './img/search.svg'
 
 import recipes from './data/recipes'
 
-import Toggle from './components/Toggle';
 
 import './App.css';
+import { Recipe } from './types'
+import {RecipeListItem} from './components/RecipeListItem'
 
 function App() {
 
-  const reviews = (activeStars: Number) => {
-    return (
-      <>
-        {[...new Array(4)].map((arr, index) => {
-          return index < activeStars ? <img src={starIcon} alt="" /> : <img src={starBorderIcon} alt="" />;
-        })}
-      </>
-    )
+  
+  const [showDroplist, setShowDroplist] = useState<boolean>(false);
+  
+  
+  const [searchString, setSearchString] = useState<string>("");
+
+  type RadioTypes = "Todos" | "Activos" | "Inactivos";
+  const [radioSelection, setRadioSelection] = useState<RadioTypes>("Todos");
+  
+  const handleRadioChange = (radio: RadioTypes) =>{
+      setRadioSelection(radio);
+      setShowDroplist(false);
   }
 
 
-
-
-
+  const filterRecipe = (recipe : Recipe):Boolean => {
+    const radio:Boolean = (radioSelection === "Todos" || recipe.isCooked === (radioSelection !== "Inactivos"));
+    const search:Boolean = (searchString ==="" || recipe.name.includes(searchString) );
+    return (radio && search);
+  }
 
 
   return (
@@ -45,22 +51,19 @@ function App() {
           <div className="recipes__nav__bar">
             <div className="recipes__nav__search">
               <img src={searchIcon} alt="" />
-              <div>Buscador</div>
+              <input type="text" placeholder="Buscador" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchString(e.target.value)} />
 
             </div>
 
             <div className="recipes__nav__drop">
-              <p>Cocido antes: <strong>Todos</strong><img src={arrowDropDown} alt="" /></p>
-              <div className='droplist'>
-              <div>Todos</div><input type="radio" name="dropdownlist" id="radio__all" value="all" defaultChecked/>
-              <div>Activos</div><input type="radio" name="dropdownlist" id="radio__checked" value="checked"/>
-              <div>Inactivos</div><input type="radio" name="dropdownlist" id="radio__unchecked" value="unchecked"/>
-               
-                {/* <div>Todos</div><div className='droplist__radio droplist__radio--checked'></div>
-                <div>Activos</div><div className='droplist__radio droplist__radio--checked'></div>
-                <div>Inactivos</div><div className='droplist__radio'></div> */}
-
-              </div>
+              <button className="recipes__nav__button" onClick={() => setShowDroplist(!showDroplist)}>Cocido antes: <strong>{radioSelection}</strong><img src={arrowDropDown} alt=""  /></button>
+              {showDroplist && (
+                <div className='droplist__list'>
+                  <div>Todos</div><input type="radio" name="dropdownlist"  onChange={() => handleRadioChange("Todos")} checked={radioSelection === "Todos"} />
+                  <div>Activos</div><input type="radio" name="dropdownlist"  onChange={() => handleRadioChange("Activos")} checked={radioSelection === "Activos"} />
+                  <div>Inactivos</div><input type="radio" name="dropdownlist" onChange={() => handleRadioChange("Inactivos")}  checked={radioSelection === "Inactivos"}/>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -73,9 +76,9 @@ function App() {
 
         <div className="recipes__table recipes__table--items">
 
-          {recipes.map(recipe =>
+          {recipes.filter((recipe => filterRecipe(recipe))).map(recipe =>
             <>
-              <div>{recipe.name}</div><div>{reviews(recipe.reviews)}</div><Toggle Name={recipe.id.toString()} Checked={recipe.isCooked} />
+            <RecipeListItem Name={recipe.name} Reviews={recipe.reviews} isCooked={recipe.isCooked} />
             </>
           )}
 

@@ -111,13 +111,21 @@ h2 {
 }
 
 .recipes__nav__drop {
+  position: relative;
+  height: 48px;
+}
+
+.recipes__nav__button{
   height: 48px;
   background: #EBF0F3;
   border-radius: 16px;
   text-align: center;
   padding-left: 24px;
   padding-right: 20px;
-  position: relative;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  line-height: 48px;
 }
 
 
@@ -126,7 +134,7 @@ h2 {
 }
 
 
-.droplist {
+.droplist__list {
   position: absolute;
   top: 100%;
   left: 0%;
@@ -191,6 +199,23 @@ input[type='radio']:checked:before {
   z-index: 1;
 }
 
+input[type='text']{
+  width: 85%;
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input[type='text']::placeholder{
+  font-size: 14px;
+  color: #79797A;
+  font-weight: 400;
+}
+
+
+
+
 
 .recipes__table {
   display: grid;
@@ -206,7 +231,7 @@ input[type='radio']:checked:before {
 .recipes__table--items {
   
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
   grid-auto-rows: 40px;
   font-size: 14px;
   font-weight: 400;

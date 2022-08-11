@@ -13,6 +13,7 @@ function Toggle({Name, Checked}:{Name:string, Checked:boolean}){
                     name={Name}
                     id={Name}
                     checked={Checked}
+                    readOnly={true}
                 />
                 <label className="toggle-switch-label" htmlFor={Name}>
                     <div className="toggle-switch-visible"></div>
