@@ -12,7 +12,7 @@ export const RecipeListItem = ({name, reviews, isCooked}:{name:string, reviews: 
 
   return (
     <>
-    <div>{name}</div><div><ReviewStar activeStars={reviews}/></div><Toggle name={name} checked={isCooked} />
+    <div>{name}</div><div><ReviewStar activeStars={reviews}/></div><Toggle name={name} checked={isCooked} readOnly={true} />
     </>
   )
 }

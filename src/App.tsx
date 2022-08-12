@@ -11,7 +11,7 @@ import recipes from './data/recipes'
 import './App.css';
 import { Recipe, RadioTypes } from './types'
 import { RecipeListItem } from './components/RecipeListItem'
-import { RadioAndLabel } from './components/RadioAndLabel'
+import Toggle from './components/Toggle'
 
 function App() {
 
@@ -28,6 +28,8 @@ function App() {
     setRadioSelection(radio);
     setShowDroplist(false);
   }
+
+  const [showNewRecipe, setShowNewRecipe] = useState<boolean>(false);
 
 
   const filterRecipe = (recipe: Recipe): Boolean => {
@@ -93,12 +95,50 @@ function App() {
           )}
 
         </div>
-        <button className='recipes__addRecipe'>
+        <button className='recipes__addRecipe' onClick={() => setShowNewRecipe(true)}>
           <div className='recipes__addRecipe__hover'>Añadir receta</div>
         </button>
-      </div>
 
+      </div>
+      {showNewRecipe &&
+        <div className='wrapper'>
+         
+          <div className='newRecipe'>
+          <form>
+            <h3>Nueva receta</h3>
+            <p>Nombre de la receta</p>
+            <input type="text" required />
+            <p>Ingredientes</p>
+            <div className='newRecipe__ingredients'>
+              <ol type="1">
+                <li><input type="text" placeholder='Tipo de ingrediente' required/>img</li>
+                <li><input type="text" placeholder='Tipo de ingrediente' />img</li>
+
+
+              </ol>
+            </div>
+            <p>Preparación</p>
+
+            <textarea placeholder="Escribe los pasos" name="message" required />
+
+            <p>Reseñas</p>
+
+            <input type="radio" name="radioReviews" value={1} />
+            <input type="radio" name="radioReviews" value={2} />
+            <input type="radio" name="radioReviews" value={3} />
+            <input type="radio" name="radioReviews" value={4} />
+
+            <p>Cocinado antes</p>
+
+            <Toggle name='isCooked' readOnly={false} />
+
+            <button type="submit" className='newRecipe__createButton'>Crear</button>
+          </form>
+          </div>
+        </div>
+      }
     </div>
+    
 
 
   );
