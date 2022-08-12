@@ -6,3 +6,5 @@ export interface Recipe{
     ingredients: Array<string>
     preparation: string
 }
+
+export type RadioTypes = "Todos" | "Activos" | "Inactivos";

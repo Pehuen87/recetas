@@ -33,3 +33,14 @@
   height: 18px;
   z-index: 1;
 }
+
+
+
+/*MEDIA QUERYS */
+
+@media screen and (max-width: 800px) {
+  .toggle-switch-visible {
+    transform: scale(0.8);
+  }
+
+}

@@ -9,30 +9,40 @@ import recipes from './data/recipes'
 
 
 import './App.css';
-import { Recipe } from './types'
-import {RecipeListItem} from './components/RecipeListItem'
+import { Recipe, RadioTypes } from './types'
+import { RecipeListItem } from './components/RecipeListItem'
+import { RadioAndLabel } from './components/RadioAndLabel'
 
 function App() {
 
-  
+
   const [showDroplist, setShowDroplist] = useState<boolean>(false);
-  
-  
+
+
   const [searchString, setSearchString] = useState<string>("");
 
-  type RadioTypes = "Todos" | "Activos" | "Inactivos";
+
   const [radioSelection, setRadioSelection] = useState<RadioTypes>("Todos");
-  
-  const handleRadioChange = (radio: RadioTypes) =>{
-      setRadioSelection(radio);
-      setShowDroplist(false);
+
+  const handleRadioChange = (radio: RadioTypes) => {
+    setRadioSelection(radio);
+    setShowDroplist(false);
   }
 
 
-  const filterRecipe = (recipe : Recipe):Boolean => {
-    const radio:Boolean = (radioSelection === "Todos" || recipe.isCooked === (radioSelection !== "Inactivos"));
-    const search:Boolean = (searchString ==="" || recipe.name.includes(searchString) );
+  const filterRecipe = (recipe: Recipe): Boolean => {
+    const radio: Boolean = (radioSelection === "Todos" || recipe.isCooked === (radioSelection !== "Inactivos"));
+    const search: Boolean = (searchString === "" || recipe.name.includes(searchString));
     return (radio && search);
+  }
+
+
+  const radioAndLabel = (radio: RadioTypes) => {
+    return (
+      <>
+        <label htmlFor={"radio_" + radio}>{radio}</label><input type="radio" name="dropdownlist" id={"radio_" + radio} onChange={() => handleRadioChange(radio)} checked={radioSelection === radio} />
+      </>
+    )
   }
 
 
@@ -56,12 +66,12 @@ function App() {
             </div>
 
             <div className="recipes__nav__drop">
-              <button className="recipes__nav__button" onClick={() => setShowDroplist(!showDroplist)}>Cocido antes: <strong>{radioSelection}</strong><img src={arrowDropDown} alt=""  /></button>
+              <button className="recipes__nav__button" onClick={() => setShowDroplist(!showDroplist)}>Cocido antes: <strong>{radioSelection}</strong><img src={arrowDropDown} alt="" /></button>
               {showDroplist && (
                 <div className='droplist__list'>
-                  <div>Todos</div><input type="radio" name="dropdownlist"  onChange={() => handleRadioChange("Todos")} checked={radioSelection === "Todos"} />
-                  <div>Activos</div><input type="radio" name="dropdownlist"  onChange={() => handleRadioChange("Activos")} checked={radioSelection === "Activos"} />
-                  <div>Inactivos</div><input type="radio" name="dropdownlist" onChange={() => handleRadioChange("Inactivos")}  checked={radioSelection === "Inactivos"}/>
+                  {radioAndLabel("Todos")}
+                  {radioAndLabel("Activos")}
+                  {radioAndLabel("Inactivos")}
                 </div>
               )}
             </div>
@@ -78,13 +88,18 @@ function App() {
 
           {recipes.filter((recipe => filterRecipe(recipe))).map(recipe =>
             <>
-            <RecipeListItem Name={recipe.name} Reviews={recipe.reviews} isCooked={recipe.isCooked} />
+              <RecipeListItem name={recipe.name} reviews={recipe.reviews} isCooked={recipe.isCooked} />
             </>
           )}
 
         </div>
+        <button className='recipes__addRecipe'>
+          <div className='recipes__addRecipe__hover'>Añadir receta</div>
+        </button>
       </div>
+
     </div>
+
 
   );
 }

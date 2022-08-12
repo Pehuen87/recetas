@@ -3,19 +3,19 @@ import React from 'react';
 import './toggle.css'
 
 
-function Toggle({Name, Checked}:{Name:string, Checked:boolean}){
+function Toggle({name, checked}:{name:string, checked:boolean}){
 
     return(
             <div className="toggle-switch">
                 <input
                     type="checkbox"
                     className="toggle-switch-checkbox"
-                    name={Name}
-                    id={Name}
-                    checked={Checked}
+                    name={name}
+                    id={name}
+                    checked={checked}
                     readOnly={true}
                 />
-                <label className="toggle-switch-label" htmlFor={Name}>
+                <label className="toggle-switch-label" htmlFor={name}>
                     <div className="toggle-switch-visible"></div>
                 </label>
             </div>

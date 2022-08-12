@@ -3,7 +3,7 @@ import Toggle from './Toggle';
 import ReviewStar from './ReviewStar';
 
 
-export const RecipeListItem = ({Name, Reviews, isCooked}:{Name:string, Reviews: number ,isCooked:boolean}) => {
+export const RecipeListItem = ({name, reviews, isCooked}:{name:string, reviews: number, isCooked:boolean}) => {
 
 
     
@@ -12,7 +12,7 @@ export const RecipeListItem = ({Name, Reviews, isCooked}:{Name:string, Reviews: 
 
   return (
     <>
-    <div>{Name}</div><div><ReviewStar activeStars={Reviews}/></div><Toggle Name={Name} Checked={isCooked} />
+    <div>{name}</div><div><ReviewStar activeStars={reviews}/></div><Toggle name={name} checked={isCooked} />
     </>
   )
 }
