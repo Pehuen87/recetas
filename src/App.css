@@ -201,7 +201,7 @@ input[type='radio']:checked:before {
   z-index: 1;
 }
 
-input[type='text']{
+.recipes__nav__search__input{
   width: 85%;
   border: none;
   background-color: transparent;
@@ -336,7 +336,7 @@ input[type='text']::placeholder{
   height: 100%;
   width: 100%;
   background-color: #ffffff;
-
+  padding-left: 24px;
 }
 
 

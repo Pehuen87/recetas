@@ -5,13 +5,14 @@ import logo from './img/logo.svg'
 import arrowDropDown from './img/arrowDropDown.png'
 import searchIcon from './img/search.svg'
 
+
 import recipes from './data/recipes'
 
 
 import './App.css';
 import { Recipe, RadioTypes } from './types'
 import { RecipeListItem } from './components/RecipeListItem'
-import Toggle from './components/Toggle'
+import { NewRecipe } from './components/NewRecipe'
 
 function App() {
 
@@ -63,8 +64,7 @@ function App() {
           <div className="recipes__nav__bar">
             <div className="recipes__nav__search">
               <img src={searchIcon} alt="" />
-              <input type="text" placeholder="Buscador" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchString(e.target.value)} />
-
+              <input className='recipes__nav__search__input' type="text" placeholder="Buscador" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchString(e.target.value)} />
             </div>
 
             <div className="recipes__nav__drop">
@@ -102,39 +102,8 @@ function App() {
       </div>
       {showNewRecipe &&
         <div className='wrapper'>
-         
-          <div className='newRecipe'>
-          <form>
-            <h3>Nueva receta</h3>
-            <p>Nombre de la receta</p>
-            <input type="text" required />
-            <p>Ingredientes</p>
-            <div className='newRecipe__ingredients'>
-              <ol type="1">
-                <li><input type="text" placeholder='Tipo de ingrediente' required/>img</li>
-                <li><input type="text" placeholder='Tipo de ingrediente' />img</li>
-
-
-              </ol>
-            </div>
-            <p>Preparación</p>
-
-            <textarea placeholder="Escribe los pasos" name="message" required />
-
-            <p>Reseñas</p>
-
-            <input type="radio" name="radioReviews" value={1} />
-            <input type="radio" name="radioReviews" value={2} />
-            <input type="radio" name="radioReviews" value={3} />
-            <input type="radio" name="radioReviews" value={4} />
-
-            <p>Cocinado antes</p>
-
-            <Toggle name='isCooked' readOnly={false} />
-
-            <button type="submit" className='newRecipe__createButton'>Crear</button>
-          </form>
-          </div>
+          <NewRecipe />
+                 
         </div>
       }
     </div>
