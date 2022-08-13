@@ -80,7 +80,7 @@ function App() {
           </div>
         </div>
 
-        <div className="recipes__table recipes__table--header">
+        <div className="recipes__table recipes__table--header disable">
           <div>Nombre de la receta</div>
           <div>Reseñas</div>
           <div>Cocinado antes</div>
@@ -103,7 +103,6 @@ function App() {
       {showNewRecipe &&
         <div className='wrapper'>
           <NewRecipe />
-                 
         </div>
       }
     </div>

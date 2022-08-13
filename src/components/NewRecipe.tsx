@@ -21,7 +21,7 @@ export const NewRecipe = () => {
         console.log(arrayIngredients);
     }
     const handleAddIngredient = () => {
-        ingredient!=="" && setArrayIngredients([...arrayIngredients, ingredient]);
+        ingredient !== "" && setArrayIngredients([...arrayIngredients, ingredient]);
         setIngredient("");
     }
 
@@ -30,34 +30,42 @@ export const NewRecipe = () => {
             <form>
                 <h3>Nueva receta</h3>
                 <p>Nombre de la receta</p>
-                <input type="text" required />
-                <p>Ingredientes</p>
-                <div className='newRecipe__ingredients'>
-                    <ol type="1">
-
-                        {arrayIngredients.map((e, index) => {
-                            return (
-                                <li key={index}><input type="text" placeholder={arrayIngredients[index]} required />
-                                    <img id={"img_" + index} src={deleteIcon} onClick={(e) => handleDeleteIngredient(e.target as HTMLImageElement)} />
-                                </li>
-                            )
-                        })}
-
-                        <li key={arrayIngredients.length}><input type="text" placeholder='Tipo de ingrediente' onChange={(e) => setIngredient(e.target.value)}/>
-                            <img id={"img_" + arrayIngredients.length} src={addIcon} onClick={() => handleAddIngredient()} />
-                        </li>
-                    </ol>
+                <div className='newRecipe__textareaWithLabel disable newRecipe__textareaWithLabel--title'>
+                    <label>Título*</label>
+                    <textarea placeholder="P.ej. Olla caliente de carne y arroz en olla de cocción lenta" name="title" rows={1} required />
                 </div>
+                <p>Ingredientes</p>
+                <ol type="1" className='newRecipe__ingredients'>
+
+                    {arrayIngredients.map((e, index) => {
+                        return (
+                            <li key={index} className="newRecipe__ingredient"><input type="text" placeholder={arrayIngredients[index]} required />
+                                <img id={"img_" + index} src={deleteIcon} onClick={(e) => handleDeleteIngredient(e.target as HTMLImageElement)} />
+                            </li>
+                        )
+                    })}
+
+                    <li key={arrayIngredients.length} className="newRecipe__ingredient"><input type="text" placeholder='Tipo de ingrediente' onChange={(e) => setIngredient(e.target.value)} />
+                        <img id={"img_" + arrayIngredients.length} src={addIcon} onClick={() => handleAddIngredient()} />
+                    </li>
+                </ol>
                 <p>Preparación</p>
 
-                <textarea placeholder="Escribe los pasos" name="message" required />
+                <div className='newRecipe__textareaWithLabel disable newRecipe__textareaWithLabel--preparation'>
+                    <label>Instrucciones*</label>
+                    <textarea placeholder="Escribe los pasos" name="message" required rows={6} />
+                </div>
 
                 <p>Reseñas</p>
                 <div className='newRecipe__reviews'>
-                    <input type="radio" name="radioReviews" value={1} />
-                    <input type="radio" name="radioReviews" value={2} />
-                    <input type="radio" name="radioReviews" value={3} />
-                    <input type="radio" name="radioReviews" value={4} />
+                    <input type="radio" name="radioReviews" value={1} id='radio_1'/>
+                    <label htmlFor='radio_1'>1</label>
+                    <input type="radio" name="radioReviews" value={2} id='radio_2'/>
+                    <label htmlFor='radio_2'>2</label>
+                    <input type="radio" name="radioReviews" value={3} id='radio_3'/>
+                    <label htmlFor='radio_3'>3</label>
+                    <input type="radio" name="radioReviews" value={4} id='radio_4'/>
+                    <label htmlFor='radio_4'>4</label>
                 </div>
                 <p>Cocinado antes</p>
 
