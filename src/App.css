@@ -415,6 +415,11 @@ input[type='text']::placeholder {
   width: 100%;
 }
 
+li::marker{
+  font-size: 12px;
+  line-height: 16px;
+}
+
 .newRecipe__ingredient {
   margin-bottom: 42px;
 }
@@ -435,6 +440,7 @@ input[type='text']::placeholder {
 
 .newRecipe__ingredient img {
   padding-left: 25px;
+  cursor: pointer;
 }
 
 
@@ -445,7 +451,16 @@ input[type='text']::placeholder {
   font-size: 14px;
 }
 
+
+.newRecipe__footer{
+  display: flex;
+  height: 136px;
+  justify-content: right;
+  margin-top: 39px;
+}
+
 .newRecipe__createButton {
+  cursor: pointer;
   width: 110px;
   height: 48px;
   background: #B2B2B3;

@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 export const NewRecipe = () => {
 
-    const [arrayIngredients, setArrayIngredients] = useState<string[]>(["0", "1", "2", "3", "4"])
+    const [arrayIngredients, setArrayIngredients] = useState<string[]>([])
     const [ingredient, setIngredient] = useState<string>("");
 
 
@@ -39,13 +39,13 @@ export const NewRecipe = () => {
 
                     {arrayIngredients.map((e, index) => {
                         return (
-                            <li key={index} className="newRecipe__ingredient"><input type="text" placeholder={arrayIngredients[index]} required />
+                            <li key={index} className="newRecipe__ingredient"><input type="text" placeholder={arrayIngredients[index]} disabled={true} />
                                 <img id={"img_" + index} src={deleteIcon} onClick={(e) => handleDeleteIngredient(e.target as HTMLImageElement)} />
                             </li>
                         )
                     })}
 
-                    <li key={arrayIngredients.length} className="newRecipe__ingredient"><input type="text" placeholder='Tipo de ingrediente' onChange={(e) => setIngredient(e.target.value)} />
+                    <li key={arrayIngredients.length} className="newRecipe__ingredient"><input type="text" placeholder='Tipo de ingrediente' onChange={(e) => setIngredient(e.target.value)} required={arrayIngredients.length === 0} />
                         <img id={"img_" + arrayIngredients.length} src={addIcon} onClick={() => handleAddIngredient()} />
                     </li>
                 </ol>
@@ -58,20 +58,22 @@ export const NewRecipe = () => {
 
                 <p>Reseñas</p>
                 <div className='newRecipe__reviews'>
-                    <input type="radio" name="radioReviews" value={1} id='radio_1'/>
+                    <input type="radio" name="radioReviews" value={1} id='radio_1' required={true} />
                     <label htmlFor='radio_1'>1</label>
-                    <input type="radio" name="radioReviews" value={2} id='radio_2'/>
+                    <input type="radio" name="radioReviews" value={2} id='radio_2' required={true} />
                     <label htmlFor='radio_2'>2</label>
-                    <input type="radio" name="radioReviews" value={3} id='radio_3'/>
+                    <input type="radio" name="radioReviews" value={3} id='radio_3' required={true} />
                     <label htmlFor='radio_3'>3</label>
-                    <input type="radio" name="radioReviews" value={4} id='radio_4'/>
+                    <input type="radio" name="radioReviews" value={4} id='radio_4' required={true} />
                     <label htmlFor='radio_4'>4</label>
                 </div>
                 <p>Cocinado antes</p>
 
                 <Toggle name='isCooked' readOnly={false} />
-
+                <div className='newRecipe__footer'>
                 <button type="submit" className='newRecipe__createButton'>Crear</button>
+                </div>
+
             </form>
         </div>
     )
