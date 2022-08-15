@@ -101,9 +101,7 @@ function App() {
 
       </div>
       {showNewRecipe &&
-        <div className='wrapper'>
           <NewRecipe />
-        </div>
       }
     </div>
     

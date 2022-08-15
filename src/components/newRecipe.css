@@ -1,0 +1,132 @@
+.wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    background: rgba(30, 54, 70, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 464px;
+    grid-template-areas: "blocked newRecipe";
+  }
+  
+  .newRecipe {
+    grid-area: newRecipe;
+    height: 100%;
+    background-color: var(--background-standard-color);
+    padding: 24px;
+    overflow-y: scroll;
+  }
+  
+  .newRecipe p {
+    font-weight: 600;
+  }
+  
+  .newRecipe__textareaWithLabel {
+    display: flex;
+    flex-direction: column;
+    background: var(--background-gray-color);
+    border: 1px solid #54B5BA;
+    border-radius: 4px;
+  }
+  
+  .newRecipe__textareaWithLabel--preparation {
+    height: 172px;
+  }
+  
+  .newRecipe__textareaWithLabel--title {
+    height: 54px;
+  }
+  
+  
+  .newRecipe__textareaWithLabel label {
+    padding-left: 8px;
+    padding-top: 8px;
+    padding-bottom: 2px;
+    padding-right: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  
+  .newRecipe__textareaWithLabel textarea {
+    padding-left: 8px;
+    padding-right: 8px;
+    border: none;
+    resize: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: transparent;
+  }
+  
+  .newRecipe__textareaWithLabel textarea:focus {
+    border: none;
+    outline: none;
+  }
+  
+  .newRecipe__textareaWithLabel textarea::placeholder {
+    color: var(--disable-color);
+  }
+  
+  .newRecipe__ingredients {
+    height: 172px;
+    overflow-y: scroll;
+    width: 100%;
+  }
+  
+  li::marker{
+    font-size: 12px;
+    line-height: 16px;
+  }
+  
+  .newRecipe__ingredient {
+    margin-bottom: 42px;
+  }
+  
+  .newRecipe__ingredient input {
+    background: var(--background-gray-color);
+    border: 1px solid #54B5BA;
+    border-radius: 4px;
+    padding: 8px;
+    width: 75%;
+    line-height: 24px;
+    font-size: 14px;
+  }
+  
+  .newRecipe__ingredient input:focus {
+    outline: none;
+  }
+  
+  .newRecipe__ingredient img {
+    padding-left: 25px;
+    cursor: pointer;
+  }
+  
+  
+  
+  .newRecipe__reviews label {
+    padding-left: 14px;
+    padding-right: 24px;
+    font-size: 14px;
+  }
+  
+  
+  .newRecipe__footer{
+    display: flex;
+    height: 136px;
+    justify-content: right;
+    margin-top: 39px;
+  }
+  
+  .newRecipe__createButton {
+    cursor: pointer;
+    width: 110px;
+    height: 48px;
+    background: #B2B2B3;
+    border-radius: 25px;
+    border: none;
+  }
