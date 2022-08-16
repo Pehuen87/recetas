@@ -8,6 +8,7 @@ import { useState, useId } from 'react'
 
 import './newRecipe.css'
 import { Recipe } from '../types'
+import { RadioLabel } from './RadioLabel'
 
 export const NewRecipe = () => {
 
@@ -33,7 +34,7 @@ export const NewRecipe = () => {
     }
 
 
-    const handleSubmit = (e: React.SyntheticEvent) => {
+    const addNewRecipe = (e: React.SyntheticEvent) => {
         /* DUMMY SUBMIT*/
         e.preventDefault();
         const target = e.target as typeof e.target & {
@@ -64,7 +65,7 @@ export const NewRecipe = () => {
     return (
         <div className='wrapper'>
             <div className='newRecipe'>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={addNewRecipe}>
                     <h3>Nueva receta</h3>
                     <p>Nombre de la receta</p>
                     <div className='newRecipe__textareaWithLabel disable newRecipe__textareaWithLabel--title'>
@@ -98,14 +99,10 @@ export const NewRecipe = () => {
 
                     <p>Reseñas</p>
                     <div className='newRecipe__reviews'>
-                        <input type="radio" name="radioReviews" value={1} id='radio_1' required={true} />
-                        <label htmlFor='radio_1'>1</label>
-                        <input type="radio" name="radioReviews" value={2} id='radio_2' required={true} />
-                        <label htmlFor='radio_2'>2</label>
-                        <input type="radio" name="radioReviews" value={3} id='radio_3' required={true} />
-                        <label htmlFor='radio_3'>3</label>
-                        <input type="radio" name="radioReviews" value={4} id='radio_4' required={true} />
-                        <label htmlFor='radio_4'>4</label>
+                        <RadioLabel value={1}></RadioLabel>
+                        <RadioLabel value={2}></RadioLabel>
+                        <RadioLabel value={3}></RadioLabel>
+                        <RadioLabel value={4}></RadioLabel>
                     </div>
                     <p>Cocinado antes</p>
 

@@ -132,3 +132,12 @@
     border-radius: 25px;
     border: none;
   }
+
+  @media screen and (max-width: 900px) {
+    
+  .newRecipe__reviews label {
+    padding-left: 12px;
+    padding-right: 15px;
+    font-size: 10px;
+  }
+  }
