@@ -3,7 +3,7 @@
 }
 
 .toggle-switch-checkbox:checked~.toggle-switch-label>.toggle-switch-visible {
-  background-color:  #8DC63F;
+  background-color:  var(--togle-selected-color);
 }
 
 
@@ -16,14 +16,14 @@
   height: 24px;
   width: 48px;
   border-radius: 16px;
-  background-color: #79797A;
+  background-color: var(--disable-color);
   position: relative;
 }
 
 
 .toggle-switch-visible::before {
   content: '';
-  background: #FFFFFF;
+  background-color: var(--background-standard-color);
   display: block;
   position: absolute;
   border-radius: 100%;
@@ -40,7 +40,7 @@
 
 @media screen and (max-width: 800px) {
   .toggle-switch-visible {
-    transform: scale(0.8);
+    transform: scale(0.7);
   }
 
 }

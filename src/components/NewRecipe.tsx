@@ -4,11 +4,16 @@ import Toggle from './Toggle'
 import addIcon from '../img/add.svg'
 import deleteIcon from '../img/delete.svg'
 
-import { SyntheticEvent, useState } from 'react'
+import { useState, useId } from 'react'
 
 import './newRecipe.css'
+import { Recipe } from '../types'
 
 export const NewRecipe = () => {
+
+
+
+
 
     const [arrayIngredients, setArrayIngredients] = useState<string[]>([])
     const [ingredient, setIngredient] = useState<string>("");
@@ -28,17 +33,38 @@ export const NewRecipe = () => {
     }
 
 
-    const handleSubmit = (e : React.SyntheticEvent) => {
-    
+    const handleSubmit = (e: React.SyntheticEvent) => {
+        /* DUMMY SUBMIT*/
         e.preventDefault();
+        const target = e.target as typeof e.target & {
+            title: { value: string };
+            preparation: { value: string };
+            radioReviews: { value: number };
+            isCooked: { value: boolean }
+            lastIngredient: { value: string }
+        };
 
-        console.log(e.target);    
+
+        let recipe: Recipe = {
+            id: 0,
+            name: target.title.value,
+            reviews: target.radioReviews.value,
+            preparation: target.preparation.value,
+            isCooked: target.isCooked.value,
+            ingredients: [...arrayIngredients]
+        };
+
+        if (target.lastIngredient.value !== "" && !arrayIngredients.includes(target.lastIngredient.value))
+            recipe.ingredients.push(target.lastIngredient.value);
+
+        /* DUMMY SUBMIT*/
+
     }
 
     return (
         <div className='wrapper'>
             <div className='newRecipe'>
-                <form  onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <h3>Nueva receta</h3>
                     <p>Nombre de la receta</p>
                     <div className='newRecipe__textareaWithLabel disable newRecipe__textareaWithLabel--title'>
@@ -46,25 +72,28 @@ export const NewRecipe = () => {
                         <textarea placeholder="P.ej. Olla caliente de carne y arroz en olla de cocción lenta" name="title" rows={1} required />
                     </div>
                     <p>Ingredientes</p>
-                    <ol type="1" className='newRecipe__ingredients'>
+                    <ol type="1" className='newRecipe__ingredients__ol'>
 
-                        {arrayIngredients.map((e, index) => {
-                            return (
-                                <li key={index} className="newRecipe__ingredient"><input type="text" placeholder={arrayIngredients[index]} disabled={true} />
-                                    <img id={"img_" + index} src={deleteIcon} onClick={(e) => handleDeleteIngredient(e.target as HTMLImageElement)} />
-                                </li>
-                            )
-                        })}
-
-                        <li key={arrayIngredients.length} className="newRecipe__ingredient"><input type="text" placeholder='Tipo de ingrediente' onChange={(e) => setIngredient(e.target.value)} required={arrayIngredients.length === 0} />
-                            <img id={"img_" + arrayIngredients.length} src={addIcon} onClick={() => handleAddIngredient()} />
+                        {
+                            arrayIngredients.map((e, index) => {
+                                return (
+                                    <li key={index} className="newRecipe__ingredient__li">
+                                        <input type="text" placeholder={arrayIngredients[index]} disabled={true} />
+                                        <img id={"img_" + index} src={deleteIcon} onClick={(e) => handleDeleteIngredient(e.target as HTMLImageElement)} alt="" />
+                                    </li>
+                                )
+                            })
+                        }
+                        <li key={arrayIngredients.length} className="newRecipe__ingredient__li">
+                            <input type="text" placeholder='Tipo de ingrediente' onChange={(e) => setIngredient(e.target.value)} name="lastIngredient" required={arrayIngredients.length === 0} />
+                            <img id={"img_" + arrayIngredients.length} src={addIcon} onClick={() => handleAddIngredient()} alt="" />
                         </li>
                     </ol>
                     <p>Preparación</p>
 
                     <div className='newRecipe__textareaWithLabel disable newRecipe__textareaWithLabel--preparation'>
                         <label>Instrucciones*</label>
-                        <textarea placeholder="Escribe los pasos" name="message" required rows={6} />
+                        <textarea placeholder="Escribe los pasos" name="preparation" required rows={6} />
                     </div>
 
                     <p>Reseñas</p>
@@ -90,3 +119,5 @@ export const NewRecipe = () => {
         </div>
     )
 }
+
+export default NewRecipe;

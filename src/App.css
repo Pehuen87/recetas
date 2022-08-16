@@ -22,6 +22,15 @@ html::-webkit-scrollbar {
   --sticker-color: #404042;
   --background-standard-color: #ffffff;
   --background-gray-color: #FDFDFD;
+  --droplist-color: #1E3646;
+  --radio-checked-color: #3C6C8D;
+  --addRecipe-button-color: #0C969D;
+  --togle-selected-color: #8DC63F;
+  --wrapper-background-color: rgba(30, 54, 70, 0.3);
+  --search-background : #F9F9F9;
+  --dropdown-button-color:#EBF0F3;
+  --header-border-color: #B1C4D1;
+  --ingredient-color: #54B5BA;
 }
 
 body {
@@ -118,7 +127,7 @@ h2 {
   height: 48px;
   width: 50%;
   max-width: 490px;
-  background: #F9F9F9;
+  background: var(--search-background);
   border-radius: 16px;
   align-items: center;
   padding-left: 12px;
@@ -137,7 +146,7 @@ h2 {
 
 .recipes__nav__button {
   height: 48px;
-  background: #EBF0F3;
+  background: var(--dropdown-button-color);
   border-radius: 16px;
   text-align: center;
   padding-left: 24px;
@@ -163,7 +172,7 @@ h2 {
   box-shadow: 0px 4px 20px rgba(30, 54, 70, 0.5);
   border-radius: 16px;
   text-align: left;
-  color: #1E3646;
+  color: var(--droplist-color);
   z-index: 2;
   padding: 16px;
 
@@ -181,11 +190,11 @@ input[type='radio']:after {
   top: -1px;
   left: -2px;
   position: relative;
-  background-color: white;
+  background-color: var(--background-standard-color);
   content: '';
   display: inline-block;
   visibility: visible;
-  border: 2px solid #79797A;
+  border: 2px solid var(--disable-color);
 }
 
 input[type='radio']:checked:after {
@@ -195,11 +204,11 @@ input[type='radio']:checked:after {
   top: -1px;
   left: -2px;
   position: relative;
-  background-color: white;
+  background-color: var(--background-standard-color);
   content: '';
   display: inline-block;
   visibility: visible;
-  border: 2px solid #3C6C8D;
+  border: 2px solid var(--radio-checked-color);
 }
 
 input[type='radio']:checked {
@@ -213,7 +222,7 @@ input[type='radio']:checked:before {
   top: 5px;
   left: 4px;
   position: absolute;
-  background-color: #3C6C8D;
+  background-color: var(--radio-checked-color);
   content: '';
   display: inline-block;
   visibility: visible;
@@ -245,7 +254,7 @@ input[type='text']::placeholder {
 
 .recipes__table--items>div {
   padding: 8px;
-  border-bottom: 1px solid #EBF0F3;
+  border-bottom: 1px solid var(--dropdown-button-color);
 }
 
 
@@ -269,7 +278,7 @@ input[type='text']::placeholder {
 
 .recipes__table--header>div {
   padding: 8px;
-  border-bottom: 1px solid #B1C4D1;
+  border-bottom: 1px solid var(--header-border-color);
 }
 
 .recipes__addRecipe {
@@ -281,7 +290,7 @@ input[type='text']::placeholder {
   bottom: 24px;
   right: 24px;
   border-radius: 100%;
-  background-color: #0C969D;
+  background-color: var(--addRecipe-button-color);
 }
 
 .recipes__addRecipe::after {
@@ -368,6 +377,10 @@ input[type='text']::placeholder {
 
   .recipes__nav__search {
     width: 90%;
+  }
+
+  .recipes__nav__button{
+    overflow: hidden;
   }
 
   .recipes__nav__drop {

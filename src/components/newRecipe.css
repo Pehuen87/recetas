@@ -5,9 +5,9 @@
     top: 0;
     left: 0;
     z-index: 4;
-    background: rgba(30, 54, 70, 0.3);
+    background: var(--wrapper-background-color);
     display: grid;
-    grid-template-columns: 1fr 464px;
+    grid-template-columns: 1fr minmax(200px, 464px);
     grid-template-areas: "blocked newRecipe";
   }
   
@@ -72,10 +72,9 @@
     color: var(--disable-color);
   }
   
-  .newRecipe__ingredients {
+  .newRecipe__ingredients__ol {
     height: 172px;
     overflow-y: scroll;
-    width: 100%;
   }
   
   li::marker{
@@ -83,27 +82,30 @@
     line-height: 16px;
   }
   
-  .newRecipe__ingredient {
+  .newRecipe__ingredient__li {
     margin-bottom: 42px;
+    padding-right: 32px;
   }
   
-  .newRecipe__ingredient input {
+  .newRecipe__ingredient__li input {
     background: var(--background-gray-color);
-    border: 1px solid #54B5BA;
+    border: 1px solid var(--ingredient-color);
+    width: calc(100% - 70px);
     border-radius: 4px;
-    padding: 8px;
-    width: 75%;
+    padding:8px;
     line-height: 24px;
     font-size: 14px;
   }
   
-  .newRecipe__ingredient input:focus {
+  .newRecipe__ingredient__li input:focus {
     outline: none;
   }
   
-  .newRecipe__ingredient img {
+  .newRecipe__ingredient__li img {
     padding-left: 25px;
     cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
   }
   
   

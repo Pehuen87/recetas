@@ -1,5 +1,4 @@
 import { Recipe } from "../types";
-
 const recipes: Array<Recipe> = [
     {
         id:0,

@@ -1,0 +1,14 @@
+
+
+
+/*MEDIA QUERYS */
+
+@media screen and (max-width: 900px) {
+
+.recipeItem__stars img{
+    width: 10px;
+    height: 10px;
+    
+
+}
+}
