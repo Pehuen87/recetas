@@ -4,7 +4,7 @@ import Toggle from './Toggle'
 import addIcon from '../img/add.svg'
 import deleteIcon from '../img/delete.svg'
 
-import { useState, useId } from 'react'
+import { useState } from 'react'
 
 import './newRecipe.css'
 import { Recipe } from '../types'

@@ -20,16 +20,23 @@ cultural perdure.
 
 Pasos básicos para entorno de desarrollo y pruebas:
 
-_Crear app de React con template de TypeScript_
-
-```
-npx create-react-app recetas-andinas --template typescript
-```
 
 _Clonar repositorio en la carpeta especificada_
 
 ```
 git clone https://github.com/Pehuen87/recetas.git
+```
+
+_ingresar en la carpeta recetas_
+
+```
+cd recetas
+```
+
+_Instalar dependencias_
+
+```
+npm install
 ```
 
 _Ejecutar script en la carpeta especificada_

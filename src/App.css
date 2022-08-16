@@ -77,7 +77,9 @@ h2 {
   grid-area: nav;
 }
 
-
+.nav img{
+  height: 100%;
+}
 
 .sidebar {
   grid-area: sidebar;
@@ -154,7 +156,6 @@ h2 {
   cursor: pointer;
   border: none;
   font-size: 14px;
-  line-height: 48px;
 }
 
 
@@ -351,8 +352,11 @@ input[type='text']::placeholder {
 @media screen and (max-width: 900px) {
 
   .app {
-    grid-template-columns: 80px 4fr;
+    grid-template-columns: 40px 4fr;
+  grid-template-rows: 40px 1fr;
   }
+
+
 
   .recipes {
     padding-left: 12px;
@@ -377,10 +381,12 @@ input[type='text']::placeholder {
 
   .recipes__nav__search {
     width: 90%;
+    height: 30px;
   }
 
   .recipes__nav__button{
     overflow: hidden;
+      height: 30px;
   }
 
   .recipes__nav__drop {

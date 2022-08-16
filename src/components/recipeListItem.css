@@ -1,5 +1,8 @@
 
 
+.recipeItem__stars img{
+    padding-right: 5px;
+}
 
 /*MEDIA QUERYS */
 
@@ -8,7 +11,7 @@
 .recipeItem__stars img{
     width: 10px;
     height: 10px;
-    
+    padding-right: 2px;
 
 }
 }
